@@ -25,16 +25,16 @@ const Register = () => {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: 'auto', padding: '2rem' }}>
+    <div style={{ maxWidth: 400, margin: 'auto', padding: '2rem', }}>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{alignContent:'center'}}>
         <input
           type="text"
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          style={{ width: '100%', marginBottom: '10px' }}
+          style={{ width: '100%', marginBottom: '10px',border:'1px solid #DDD',padding:'10px',borderRadius:'8px' }}
         />
         <input
           type="email"
@@ -42,7 +42,7 @@ const Register = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ width: '100%', marginBottom: '10px' }}
+          style={{ width: '100%', marginBottom: '10px',border:'1px solid #DDD',padding:'10px',borderRadius:'8px' }}
         />
         <input
           type="password"
@@ -50,7 +50,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ width: '100%', marginBottom: '10px' }}
+          style={{ width: '100%', marginBottom: '10px',border:'1px solid #DDD',padding:'10px',borderRadius:'8px' }}
         />
         <button type="submit" disabled={isLoading} style={{ width: '100%' }}>
           {isLoading ? 'Registering...' : 'Register'}
