@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/auth/authSlice';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,10 @@ const Login = () => {
         token: res.token,
         user: res.user
       }));
-      alert('Login successful!');
+      toast.success('Login successful!')
 
     } catch (err) {
-      alert(err.data?.message || 'Login failed!');
+      toast.error(err.data?.message || 'Login failed!')
     }
   };
 
@@ -36,9 +37,9 @@ const Login = () => {
         token: res.token,
         user: res.user
       }));
-      alert('Google login successful!');
+      toast.success('Google login successful!');
     } catch (err) {
-      alert(err.data?.message || 'Google login failed!');
+      toast.error(err.data?.message || 'Google login failed!');
     }
   };
 
@@ -73,7 +74,7 @@ const Login = () => {
       <GoogleOAuthProvider clientId='624020306715-vn15ckt4ulh78edq2qa2o10p1svgpi46.apps.googleusercontent.com'>
         <GoogleLogin
           onSuccess={handleGoogleSuccess}
-          onError={() => alert('Google login failed')}
+          onError={() => toast.error('Google login failed')}
         />
       </GoogleOAuthProvider>
     </div>

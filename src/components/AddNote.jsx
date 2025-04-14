@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { toast } from 'react-toastify';
+
 
 const AddNote = ({ onAdd }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,12 +10,17 @@ const AddNote = ({ onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title || content) {
-      onAdd({ title, content });
-      setTitle('');
-      setContent('');
-      setIsExpanded(false);
+    const trimmedTitle = title.trim();
+    const trimmedContent = content.trim();
+  
+    if (!trimmedTitle && !trimmedContent) {
+       toast.error("Note can't be empty")
+      return;
     }
+    onAdd({ title: trimmedTitle, content: trimmedContent });
+  setTitle('');
+  setContent('');
+  setIsExpanded(false);
   };
 
   const handleClickOutside = (e) => {

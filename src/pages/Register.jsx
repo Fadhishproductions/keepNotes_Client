@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRegisterUserMutation } from '../features/auth/authApi';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/auth/authSlice';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ const Register = () => {
     try {
       const res = await registerUser({ name, email, password }).unwrap();
       dispatch(setCredentials({ token: res.token, user: res.user }));
-      alert('Registration successful!');
+      toast.success('Registration successful!');
     } catch (err) {
-      alert(err.data?.message || 'Registration failed');
+      toast.error(err.data?.message || 'Registration failed');
     }
   };
 

@@ -5,11 +5,13 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Notes from './pages/Notes';
 import PublicRoute from './components/PublicRoute';
 import Header from './components/Header';
-
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/ReactToastify.css'
 function App() {
   return (
     <Router>
       <Header/>
+      <ToastContainer />
       <Routes>
        {/* 👇 Only accessible when NOT logged in */}
        <Route element={<PublicRoute />}>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const NoteModal = ({ note, onClose, onEdit, onDelete, onUpdate }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,6 +30,10 @@ const NoteModal = ({ note, onClose, onEdit, onDelete, onUpdate }) => {
   if (!note) return null;
 
   const handleSave = () => {
+    if (!editedTitle.trim() && !editedContent.trim()) {
+      toast.error("Can't save an empty note")
+      return;
+    }
     onUpdate({ ...note, title: editedTitle, content: editedContent });
     setEditMode(false);
   };

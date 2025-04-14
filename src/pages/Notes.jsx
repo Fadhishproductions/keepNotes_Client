@@ -9,6 +9,7 @@ import {
 import NoteCard from '../components/NoteCard';
 import NoteModal from '../components/NoteModal';
 import AddNote from '../components/addNote';
+import { toast } from 'react-toastify';
 
 const Notes = () => {
   const { data: notes = [], isLoading, isError } = useGetNotesQuery();
@@ -26,14 +27,14 @@ const Notes = () => {
 
   const handleAddNote = async (e) => {
     e.preventDefault();
-    if (!title || !content) return alert('Fill all fields');
+    if (!title || !content) return toast.error('Fill all fields');
 
     try {
       await createNote({ title, content });
       setTitle('');
       setContent('');
     } catch (err) {
-      alert('Error adding note');
+      toast.error('Error adding note');
     }
   };
 
@@ -90,7 +91,7 @@ const Notes = () => {
   try {
     await createNote({ title, content });
   } catch (err) {
-    alert('Failed to create note');
+    toast.error('Failed to create note');
   }
 }} />
 
