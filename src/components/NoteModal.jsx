@@ -35,6 +35,7 @@ const NoteModal = ({ note, onClose, onEdit, onDelete, onUpdate }) => {
       return;
     }
     onUpdate({ ...note, title: editedTitle, content: editedContent });
+    toast.success('Edited Successfully')
     setEditMode(false);
   };
 
