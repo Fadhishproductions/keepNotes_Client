@@ -8,7 +8,7 @@ import {
 } from '../features/notes/noteApi';
 import NoteCard from '../components/NoteCard';
 import NoteModal from '../components/NoteModal';
-import AddNote from '../components/addNote';
+import AddNote from '../components/AddNote';
 import { toast } from 'react-toastify';
 
 const Notes = () => {
